@@ -1,5 +1,5 @@
 import { Komponent , render} from 'kofujs'
-
+import TodoApp from './components/TodoApp.js';
 const styles = {
   mainPageHeading: {
     backgroundColor: 'red'
@@ -17,9 +17,10 @@ class Example extends Komponent{
     console.log('Hello world')
   }
 
+
   present () {
     return (
-        <h1 className={`${this.classes.mainPageHeading}`}> Hello World</h1>
+        <TodoApp/>
     )
   }
 }

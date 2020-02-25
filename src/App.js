@@ -8,13 +8,10 @@ class App extends Komponent {
     this.state = {
       todos: [{ task: "Grab Groceries" }, { task: "Take out the trash" }]
     }
-    this.inputHandler = this.inputHandler.bind(this)
+
     this.addHandler = this.addHandler.bind(this)
   }
 
-  inputHandler(event) {
-    this.setState({ [event.target.name]: event.target.value })
-  }
 
   addHandler(newTodo) {
     this.setState({
@@ -25,12 +22,11 @@ class App extends Komponent {
     present () {
       console.log('rendering')
       const todos = this.state.todos
-      {console.log(todos.task)}
 
       return (
         <div>
           <h1>Todo App</h1>
-          <TodoForm newTodo={this.addHandler}/>
+          <TodoForm createTodo={this.addHandler}/>
           <ul>
             {fu.mapElements( todos, (item, i) => <li><Todo task={item.task} /></li>)}
           </ul>

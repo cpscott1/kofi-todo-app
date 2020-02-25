@@ -5,14 +5,18 @@ class TodoForm extends Komponent {
     super(props)
     this.state = { task: ''}
 
+    this.inputHandler = this.inputHandler.bind(this)
     this.submitHandler = this.submitHandler.bind(this)
   }
 
+  inputHandler(event) {
+    this.setState({ [event.target.name]: event.target.value })
+  }
 
 
   submitHandler(event) {
     event.preventDefault()
-    this.props.newTodo(this.state)
+    this.props.createTodo(this.state)
     this.setState({
       task: ''
     })
@@ -21,11 +25,13 @@ class TodoForm extends Komponent {
   present(props) {
     return (
     <form onSubmit={this.submitHandler}>
+      <label htmlFor='task'>New Task</label>
       <input
       placeholder="new task"
       value={this.state.task}
-      name="todo"
-      onChange={this.props.inputHandler}/>
+      id='task'
+      name="task"
+      onChange={this.inputHandler}/>
       <button>Add Todo</button>
     </form>
     )

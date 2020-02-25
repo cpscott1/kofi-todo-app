@@ -16,7 +16,7 @@ class App extends Komponent {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  addHandler(props) {
+  addHandler(newTodo) {
     this.setState({
       todos: [...this.state.todos, newTodo]
     })

@@ -1,43 +1,28 @@
-import { Komponent , render} from 'kofujs'
+import { Komponent , render, fu} from 'kofujs'
+import Todo from './Todo'
 
 class App extends Komponent {
-  constructor(props) {
-    super(props)
+  constructor(props){
+    super(props);
     this.state = {
-      todos: [],
-      currentItem: {
-        text: ''
-      }
+      todos: [{ task: "Grab Groceries" }, { task: "Take out the trash" }]
     }
-    this.handleInput = this.handleInput.bind(this)
-    this.addItem = this.addItem.bind(this)
   }
-  handleInput(e) {
-    this.setState({
-      currentItem: {
-        text: e.target.value
-      }
-    })
-  }
-  addItem(e) {
-    e.preventDefault()
-    const newItem = this.state.currentItem
-    console.log(newItem)
-  }
-  present() {
-    return (
-      <div className="todo">
-        <header>
-          <form id="todo-form" onSubmit={this.addItem}>
-            <input type="text" placeholder="enter text"
-            value={this.state.currentItem.text}
-            onChange={this.handleInput}/>
-            <button type="submit">Add</button>
-          </form>
-        </header>
-      </div>
-    )
-  }
+
+    present () {
+      console.log('rendering')
+      const todos = this.state.todos
+      {console.log(todos.task)}
+
+      return (
+        <div>
+          <h1>Todo App</h1>
+          <ul>
+            {fu.mapElements( todos, (item, i) => <li><Todo task={item.task} /></li>)}
+          </ul>
+        </div>
+      )
+    }
 }
 
 export default App;

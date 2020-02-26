@@ -16,7 +16,7 @@ class TodoForm extends Komponent {
 
   submitHandler(event) {
     event.preventDefault()
-    this.props.createTodo(this.state)
+    this.props.createTodo({...this.state, id: '' })
     this.setState({
       task: ''
     })

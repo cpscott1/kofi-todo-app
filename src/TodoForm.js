@@ -25,7 +25,6 @@ class TodoForm extends Komponent {
   present(props) {
     return (
     <form onSubmit={this.submitHandler}>
-      <label htmlFor='task'>New Task</label>
       <input
       placeholder="new task"
       value={this.state.task}

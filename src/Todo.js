@@ -3,46 +3,34 @@ import { Komponent , render} from 'kofujs'
 class Todo extends Komponent {
   constructor(props) {
     super(props)
-    this.state = {
-      isEditing: false
+
+    const styles = {
+      todo: {
+        display: 'flex',
+        margin: '0 6rem',
+        padding: '1.1rem 3rem',
+        flexDirection: 'row-reverse',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+      }
     }
+
+    const { classes } = this.setStyles(styles)
+    this.classes = classes
+
     this.handleRemove = this.handleRemove.bind(this)
-    this.toggleForm = this.toggleForm.bind(this)
   }
   handleRemove() {
     this.props.deleteTodo(this.props.id)
   }
-
-  toggleForm() {
-    this.setState({
-      isEditing: !this.state.isEditing
-    })
-  }
-
-  updateHandler(event) {
-
-  }
   present() {
-    let result;
-    if(this.state.isEditing) {
-      result = (
-        <div>
-          <form onSubmit={this.updateHandler}>
-            <input type="text" />
-            <button>Save</button>
-          </form>
-        </div>
-      )
-    } else {
-      result = (
-        <div>
-          <button onClick={this.toggleForm}>Edit</button>
-          <button onClick={this.handleRemove}>Delete</button>
-          <li>{this.props.task}</li>
-        </div>
-      )
-    }
-    return result;
+    return (
+      <div className={this.classes.todo}>
+        <button onClick={this.handleRemove}>Delete</button>
+        <li>{this.props.task}</li>
+      </div>
+    )
   }
 }
 

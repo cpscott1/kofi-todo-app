@@ -2,12 +2,30 @@ import { Komponent , render, fu} from 'kofujs'
 import Todo from './Todo'
 import TodoForm from './TodoForm'
 
+
 class App extends Komponent {
   constructor(props){
     super(props);
     this.state = {
       todos: []
     }
+
+    const styles = {
+      todoList: {
+        margin: '4rem auto',
+        padding: '3rem 3rem 3rem',
+        maxWidth: '500px',
+        backgroundColor: '#ff6666',
+        color: '#fff'
+      },
+      listItem: {
+        marginTop: '2.6rem',
+        listStyle: 'none'
+      }
+    }
+
+    const { classes } = this.setStyles(styles)
+    this.classes = classes
 
     this.addHandler = this.addHandler.bind(this)
     this.removeTodo = this.removeTodo.bind(this)
@@ -32,12 +50,12 @@ class App extends Komponent {
       const todos = this.state.todos
 
       return (
-        <div>
+        <div className={this.classes.todoList}>
           <h1>Todo App</h1>
-          <TodoForm createTodo={this.addHandler}/>
-          <ul>
-            {fu.mapElements( todos, (item, i) => <li><Todo key={i} id={i} task={item.task} deleteTodo={this.removeTodo} /></li>)}
+          <ul className={this.classes.listItem}>
+            {fu.mapElements( todos, (item, i) => <li><Todo key={i} id={i} task={item.task} deleteTodo={this.removeTodo} update={this.updateTodo}/></li>)}
           </ul>
+          <TodoForm createTodo={this.addHandler}/>
         </div>
       )
     }

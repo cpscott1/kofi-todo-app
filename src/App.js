@@ -20,6 +20,7 @@ class App extends Komponent {
       },
       listItem: {
         marginTop: '2.6rem',
+        padding: '0px',
         listStyle: 'none'
       }
     }

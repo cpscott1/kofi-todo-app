@@ -21,6 +21,9 @@ class Todo extends Komponent {
         borderRadius: '10px',
         border: 'none',
         backgroundColor: '#779BBD'
+      },
+      task: {
+        marginLeft: '1rem'
       }
     }
 
@@ -36,7 +39,7 @@ class Todo extends Komponent {
     return (
       <div className={this.classes.todo}>
         <button className={this.classes.button} onClick={this.handleRemove}>Delete</button>
-        <li>{this.props.task}</li>
+        <li className={this.classes.task}>{this.props.task}</li>
       </div>
     )
   }

@@ -31,7 +31,7 @@
     "color": "^3.1.2",
     "consola": "^2.11.2",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "gulp": "^4.0.2",
     "gulp-coffee": "^3.0.3",
     "gulp-nodemon": "^2.4.2",
